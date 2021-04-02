@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -139,6 +140,9 @@ func readZkb() float64 {
 
 func main() {
 	// Check command line param
+	var persistInflux bool
+	flag.BoolVar(&persistInflux, "influxdb", true, "Persist to influxdb (true/false) default=true")
+	flag.Parse()
 	logger = stdlog.GetFromFlags()
 	logger.Debugf("Started goZKBSaron.go")
 	logger.Debugf("Retrieve Value for SARON")
@@ -149,5 +153,9 @@ func main() {
 	} else {
 		logger.Debugf("Retrieved SARON: %f", saron)
 	}
-	writeInflux(saron)
+	if persistInflux {
+		writeInflux(saron)
+	} else {
+		logger.Debugf("Not persisting to InfluxDB --influxdb=%t", persistInflux)
+	}
 }
