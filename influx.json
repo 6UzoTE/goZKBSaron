@@ -1,0 +1,6 @@
+{
+  "host": "server1.example.com",
+  "user": "user",
+  "pass": "pass",
+  "tls":  true
+}
