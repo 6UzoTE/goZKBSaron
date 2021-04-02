@@ -115,7 +115,8 @@ func readZkb() float64 {
 	} else {
 		body, err := ioutil.ReadAll(resp.Body)
 		resp.Body.Close()
-		myClient.CloseIdleConnections()
+		//removed for backward compatiblity Go 1.11 (Debian)
+		//myClient.CloseIdleConnections()
 		if err != nil {
 			logger.Criticalf("Error :", err)
 		}
