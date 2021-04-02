@@ -155,6 +155,7 @@ func main() {
 		logger.Debugf("Retrieved SARON: %f", saron)
 	}
 	if persistInflux {
+		logger.Debugf("Persisting to InfluxDB --influxdb=%t", persistInflux)
 		writeInflux(saron)
 	} else {
 		logger.Debugf("Not persisting to InfluxDB --influxdb=%t", persistInflux)
