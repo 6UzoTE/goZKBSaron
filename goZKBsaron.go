@@ -98,7 +98,7 @@ func writeInflux(saron float64) {
 
 }
 
-//READ (scrape) interest rate from webpage
+//READ (scrape) current interest rate from webpage
 func readZkb() float64 {
 	var conver error
 	var re = regexp.MustCompile(`(?m)\<p\sclass\=\"fi-rate\"\>Aktuell\s*\<span\sclass\=\"number\"\>\s*CHF\s*(.*[-.1234567890])`)
