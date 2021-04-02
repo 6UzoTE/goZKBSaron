@@ -25,6 +25,7 @@ type INFLUXconn struct {
 	TLS  bool   `json:"tls"`
 }
 
+//READ JSON INFLUX DB configuration
 func readConfJSON() INFLUXconn {
 	var influxc INFLUXconn
 	var bytefile []byte
@@ -46,6 +47,7 @@ func readConfJSON() INFLUXconn {
 	return influxc
 }
 
+//Write to INFLUX DB
 func writeInflux(saron float64) {
 	var hoststring string
 	inc := readConfJSON()
@@ -96,6 +98,7 @@ func writeInflux(saron float64) {
 
 }
 
+//READ (scrape) interest rate from webpage
 func readZkb() float64 {
 	var conver error
 	var re = regexp.MustCompile(`(?m)\<p\sclass\=\"fi-rate\"\>Aktuell\s*\<span\sclass\=\"number\"\>\s*CHF\s*(.*[-.1234567890])`)
